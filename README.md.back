@@ -1,3 +1,6 @@
+# OpenToPublic
+Creating Azure resource script with to share with the friends and families
+
 # Azure Hub-Spoke Network Setup
 
 This project provides an Azure CLI script to automate the creation of a hub-and-spoke virtual network topology in Microsoft Azure. It includes the setup of a resource group, hub and spoke VNets with multiple subnets, and VNet peering to establish connectivity between the networks.
