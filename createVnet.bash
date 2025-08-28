@@ -1,4 +1,10 @@
-```
+#===========================================================================================================================================#
+#   AUTHOR  :  S
+#   DATE    :  08-23-2025
+#   COMMENT :  Deploying single vnet with hub/spoke and peering in Single Region
+#   VERSION :  1.0
+#===========================================================================================================================================#
+
 #ResourceGroup
 az group create --name rg-demo --location westus3 --tags owner=Sisay environment=dev project=tbd resource=rg
 #Vnet
@@ -14,7 +20,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
         az network vnet subnet create --resource-group rg-demo --vnet-name hubVnet --name hubSubnet3 --address-prefix 100.100.2.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name hubVnet --name hubSubnet4 --address-prefix 100.100.3.0/24
 
-    Step 2: Create spoke vnet with 3 Subnet
+    #Step 2: Create spoke vnet with 3 Subnet
         az network vnet create \
           --name spokeVnetRed \
           --resource-group rg-demo \
@@ -38,8 +44,8 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetBlue --name spokeBlueSubnet3 --address-prefix 100.102.2.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetBlue --name spokeBlueSubnet4 --address-prefix 100.102.3.0/24
         
-        #Step 4: Create vnet peering to create star(hub/spoke) topology
-        #
+    #Step 4: Create vnet peering to create star(hub/spoke) topology
+      #Hub to spoke Red
         az network vnet peering create \
           --name hubToSpokeRed \
           --resource-group rg-demo \
@@ -47,7 +53,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --remote-vnet spokeVnetRed \
           --allow-vnet-access \
           --allow-forwarded-traffic true
-        #
+      # Spoke Red to Hub
         az network vnet peering create \
           --name SpokeRedToHub \
           --resource-group rg-demo \
@@ -55,6 +61,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --remote-vnet hubVnet \
           --allow-vnet-access \
           --allow-forwarded-traffic true
+      #Hub to spoke Blue
         az network vnet peering create \
           --name hubToSpokeBlue \
           --resource-group rg-demo \
@@ -62,7 +69,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --remote-vnet spokeVnetBlue \
           --allow-vnet-access \
           --allow-forwarded-traffic true
-        #
+      # #Spoke Blue to hub
         az network vnet peering create \
           --name SpokeBlueToHub \
           --resource-group rg-demo \
@@ -70,4 +77,3 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --remote-vnet hubVnet \
           --allow-vnet-access \
           --allow-forwarded-traffic true
-```
