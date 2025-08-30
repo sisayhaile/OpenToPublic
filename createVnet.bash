@@ -6,7 +6,7 @@
 #===========================================================================================================================================#
 
 #ResourceGroup
-az group create --name rg-demo --location westus3 --tags owner=Sisay environment=dev project=tbd resource=rg
+az group create --name rg-demo --location westus3 --tags Author=Sisay environment=dev project=tbd resource=rg
 #Vnet
     #Step 1: Create Hub vnet  with 5 Subnet
         az network vnet create \
@@ -14,7 +14,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --resource-group rg-demo \
           --location westus3 \
           --address-prefix 100.100.0.0/22 \
-          --tags owner=Sisay environment=dev project=tbd resource=vnet topolgy=hub
+          --tags Author=Sisay environment=dev project=tbd resource=vnet topolgy=hub
         az network vnet subnet create --resource-group rg-demo --vnet-name hubVnet --name hubSubnet1 --address-prefix 100.100.0.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name hubVnet --name hubSubnet2 --address-prefix 100.100.1.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name hubVnet --name hubSubnet3 --address-prefix 100.100.2.0/24
@@ -26,7 +26,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --resource-group rg-demo \
           --location westus3 \
           --address-prefix 100.101.0.0/22 \
-          --tags owner=Sisay environment=dev project=sample resource=vnet topolgy=spoke
+          --tags Author=Sisay environment=dev project=sample resource=vnet topolgy=spoke
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetRed --name spokeRedSubnet1 --address-prefix 100.101.0.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetRed --name spokeRedSubnet2 --address-prefix 100.101.1.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetRed --name spokeRedSubnet3 --address-prefix 100.101.2.0/24
@@ -38,7 +38,7 @@ az group create --name rg-demo --location westus3 --tags owner=Sisay environment
           --resource-group rg-demo \
           --location westus3 \
           --address-prefix 100.102.0.0/22 \
-          --tags owner=Sisay environment=dev project=sample resource=vnet topolgy=spoke
+          --tags Author=Sisay environment=dev project=sample resource=vnet topolgy=spoke
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetBlue --name spokeBlueSubnet1 --address-prefix 100.102.0.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetBlue --name spokeBlueSubnet2 --address-prefix 100.102.1.0/24
         az network vnet subnet create --resource-group rg-demo --vnet-name spokeVnetBlue --name spokeBlueSubnet3 --address-prefix 100.102.2.0/24
